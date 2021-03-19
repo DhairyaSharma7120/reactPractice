@@ -1,0 +1,7 @@
+.custom-grid-center{
+    display: grid;
+    place-content: center;
+}
+.formBody{
+    width: 50vw;
+}

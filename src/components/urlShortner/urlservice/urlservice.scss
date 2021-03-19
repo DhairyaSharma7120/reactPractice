@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+$font: 'Montserrat', sans-serif;
+.urlDashboard{
+    display: flex;
+    
+    .cusSidenav{
+        width: 350px;
+        height: 85vh;
+        margin-top:43px;
+        background-color: #202020;
+        border: 1px solid rgba(255,99,71,0.5);
+        margin-left: 10px;
+        ul{
+            margin-top: 80px;
+            color: tomato;
+            list-style: none;
+            font-family: $font;
+            font-weight: bold;
+            
+            li{
+                display: flex;
+                cursor: pointer;               
+                padding: 20px;
+                background: linear-gradient(to left, transparent 50%, rgba(255,99,71,0.3) 50%) right;
+                background-size: 200%;
+                transition: .7s ease-out;
+                margin-right: 40px;
+                &:hover{
+                    
+                    background-position: left;
+                }
+            }
+            .active{
+                background-color: rgba(255,99,71,0.3);
+            }
+
+        }
+
+      
+    }
+    .cusComponent{
+        width: 70vw;
+        height: 85vh;
+        border: 1px solid rgba(255,99,71,0.5);
+        margin: 43px -60px -50px 30px;
+        display: grid;
+        place-content: center;
+    }
+    
+}

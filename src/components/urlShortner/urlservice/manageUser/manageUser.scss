@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+$font: 'Montserrat', sans-serif;
+.cusChartBody{
+    width: 65vw;
+    background-color:transparent;
+    display: grid;
+    place-content: center;
+    .cusHeader{
+        color: white;
+        font-family: $font;
+    }
+    .cusChart{
+        width: 100%;
+    }
+    
+}

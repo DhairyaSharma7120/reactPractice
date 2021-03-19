@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+$font: 'Montserrat', sans-serif;
+.loginForm{
+    .loginFrame{
+        background-color: transparent;
+        border: 2px solid tomato;
+        padding: 80px 80px;
+        border-radius: 0px;     
+        .cusForm{
+            .cusFormfield{
+                padding-bottom: 20px;
+                .cusLabel{
+                    color: tomato;
+                    font-family: $font;
+                    float: left;
+                    font-weight: bold;
+                    padding: 4px;
+                                        
+                }
+                .cusInput{
+                   background-color: transparent;
+                   border-radius: 0px;
+                   border: 1px solid tomato;
+                   color: white;
+                   &:active{
+                       outline: none;
+                    border: 2px solid tomato;
+                   }
+                }
+                .cusButton{
+                    transform: skewX(10deg);
+                }                
+            }
+            
+            .error-shake{
+                color: tomato;
+                opacity: 1;
+                animation-name: shake;
+                animation-duration: 1s;
+                animation-iteration-count: 1;
+                @keyframes shake {
+                    50%{
+                        margin-right: 5px;
+                    }
+                    100%{
+                        margin-right:-5px;
+                    }
+                }
+            }
+        }
+        
+    }
+}
