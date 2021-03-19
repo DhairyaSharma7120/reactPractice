@@ -19,7 +19,7 @@ export class Sidenav extends Component {
                 document.getElementById("li3").classList.remove("active");
                 document.getElementById("li4").classList.remove("active");
                 break;
-            case ('manageURLS'):
+            case ('manageUrls'):
                 // console.log("yoyo manageURLS")
                 document.getElementById("li2").classList.add("active");
                 document.getElementById("li1").classList.remove("active");
@@ -45,23 +45,33 @@ export class Sidenav extends Component {
         }
     }
     render() {
-        const {handleUrlShort,handleManageUser} = this.props
+        const {handleUrlShort,handleManageUser,handleManageUrls} = this.props
         console.log(this.state)
         return (
             <div className="cusSidenav">
                <ul className="sidenavList">
-                    <li id="li1" onClick={()=>{this.setState({sideNav:'manageUsers'})
-                    handleManageUser()
-                    }}>Manage Users</li>
-                    <li id="li2" onClick=
-                    {()=> {
-                        this.setState({sideNav:'manageURLS'}) 
-                        
-                    }}>Manage URLs</li>
+                    <li id="li1" onClick={
+                        ()=>{
+                        this.setState({sideNav:'manageUsers'})
+                        handleManageUser()
+                        }
+                    }>Manage Users</li>
+
+
+                    <li id="li2" onClick={
+                        ()=> {
+                        this.setState({sideNav:'manageUrls'});
+                        handleManageUrls();
+                        }
+                    }>Manage URLs</li>
+
                     <li id="li3" onClick={
-                        ()=>{this.setState({sideNav:'useShortners'})
-                        handleUrlShort();}
+                        ()=>{
+                        this.setState({sideNav:'useShortners'})
+                        handleUrlShort();
+                        }
                     } >Use Shortner</li>
+
                     <li id="li4" onClick={()=>this.setState({sideNav:'manageComplains'})} >Manage Complains</li>
                </ul>
 

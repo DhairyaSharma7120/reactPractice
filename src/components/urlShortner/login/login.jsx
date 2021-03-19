@@ -8,11 +8,12 @@ const password = "hello";
 
 
 const errShake = ()=>{
-    var element = document.getElementById("error-message");
+    var element = document.getElementById("error-shake");
     
-    setTimeout(element.classList.remove("error-shake"),2000);
-    async function asyncCall() { element.classList.add("error-shake"); }
-    asyncCall()
+    // setTimeout(element.classList.remove("error-shake"),2000);
+    // async function asyncCall() { element.classList.add("error-shake"); }
+    // asyncCall()
+    element.innerHTML="Wrong username or password"
     // console.log(element.className,"classname"," ",typeof(element.className),"type")
 
     // if(element.className === "error-shake"){     
@@ -52,8 +53,8 @@ const Login = ({ toggleState, userLoggedIn, history, path }) => {
                                  onChange={(e) => setPass(e.target.value)} />
                                 </div>
                             
-                                <p id="error-message">
-                                Wrong username or password</p>
+                                <p id="error-shake">
+                                </p>
                             
                             <button
                             className="cusButton"
