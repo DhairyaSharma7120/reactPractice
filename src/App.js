@@ -14,7 +14,7 @@ import {particle} from './particle.js'
 
 
 function App() {
-  console.log(particle)
+
   return (
     <div className="App">
     

@@ -1,35 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Button, Image, Message, Form, Grid, Header, Segment } from 'semantic-ui-react'
-
+import {  Icon, Modal } from 'semantic-ui-react'
 import '../urlShortner.style.scss'
 import './login.scss'
+import { setCurrentUser } from '../../../redux/user/user.action'
+import { selectCurrentUser } from '../../../redux/user/user.selector';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
 const username = "dhairya";
 const password = "hello";
 
-
-const errShake = ()=>{
-    var element = document.getElementById("error-shake");
-    
-    // setTimeout(element.classList.remove("error-shake"),2000);
-    // async function asyncCall() { element.classList.add("error-shake"); }
-    // asyncCall()
-    element.innerHTML="Wrong username or password"
-    // console.log(element.className,"classname"," ",typeof(element.className),"type")
-
-    // if(element.className === "error-shake"){     
-    //     element.classList.remove("error-shake")    
-    // }else{
-    //     element.classList.add("error-shake")
-    // }
-    // if(element.className){     
-    //     element.classList.add("error-shake")
-    // }
+const errShake = (errRef)=>{
+    console.log({errRef})
+    var element = errRef.current
+    // element.classList.toggle('error-shake')
+        element.innerHTML="Wrong username or password"
+        element.classList.toggle('error-shake')
+     
 }
-
-const Login = ({ toggleState, userLoggedIn, history, path }) => {
+const errReshake = (errRef)=>{
+    console.log({errRef})
+    var element = errRef.current;
+    // element.classList.toggle('error-shake')
+        element.innerHTML="Wrong username or password"
+        element.classList.toggle('error-shake')
+     
+}
+  
+const Login = ({ toggleState, userLoggedIn, history, path,currentUser }) => {
+    const errRef = useRef(null)
     const [uname, setUname] = useState('');
     const [pass, setPass] = useState('');
-    console.log(history)
+    const [open, setOpen] = React.useState(true)
+    // console.log(currentUser,"yoyoy this is the redux user state")
     return (
         <div className="loginForm">
             <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
@@ -51,9 +55,8 @@ const Login = ({ toggleState, userLoggedIn, history, path }) => {
                                 type="password"    
                                  placeholder='Last Name'
                                  onChange={(e) => setPass(e.target.value)} />
-                                </div>
-                            
-                                <p id="error-shake">
+                                </div>                            
+                                <p ref={errRef} >
                                 </p>
                             
                             <button
@@ -62,18 +65,46 @@ const Login = ({ toggleState, userLoggedIn, history, path }) => {
                                 () => {
                                     if (uname === username && pass === password) {
                                         toggleState()
-                                        history.push(`${path}/dashboard`)
-                                        
-
-                                    } else {errShake()}
+                                        history.push(`${path}/`)                                        
+                                    } else {errShake(errRef);}
                                 }
                             }>Login</button>
                         </Form>
-
+                        
                     </div>
+                   
                 </Grid.Column>
-            </Grid></div>
+                
+            </Grid>
+            <Modal
+      basic
+      onClose={() => setOpen(false)}
+      onOpen={() => setOpen(true)}
+      open={open}
+      size='small'
+     
+    >
+      
+      <Modal.Content>
+         <div class="circle-loader">
+             <div class="checkmark draw"></div>
+        </div>                    
+      </Modal.Content>
+     
+    </Modal>
+            </div>
+
+        
     )
 }
 
-export default Login
+const mapStateToProps = createStructuredSelector({
+    currentUser : selectCurrentUser
+  })
+  
+  const mapDispatchToProps = dispatch => ({
+    setCurrentUser: user => dispatch(setCurrentUser(user))
+  });
+  
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -40,18 +40,20 @@ app.get('/req', (req,res) => {
     // res.send("working")
 });
 
+app.get('/*',(req,res)=>{
+  res.send('')
+})
 
 app.get(`/drocks`,(req,res)=>{
     res.send("yoyoy")
 })
 
 
-app.get('/delete',(req,res)=>{
-  // console.log(req.query.name);
-  doc.deleteOne({ shortUrl: req.query.shortUrl }, function (err) {
-    if (err) return res.status.json(handleError(err));
-    res.status(200).json({ success:true, message:'Deleted succesfully' })
-    console.log("deleted")
+app.post('/delete',(req,res)=>{
+  // console.log(req.body.shortUrl);  
+  doc.deleteOne({ user: req.query.shortUrl }, function (err) {
+    if (err) return handleError(err);
+    res.send({success:true})
     // deleted at most one tank document
   });
   

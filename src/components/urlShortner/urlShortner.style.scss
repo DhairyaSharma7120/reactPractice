@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 $font: 'Montserrat', sans-serif;
 
-.body{
+.urlShortner-body{
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -16,7 +16,8 @@ $font: 'Montserrat', sans-serif;
     .nav{
         
         display: grid;
-        grid-template-columns: 80px 80px;
+        grid-gap: 20px;
+        grid-template-columns: repeat(3,80px);
         place-content: center;
         width: 100vw;
         height: 35px;
@@ -27,6 +28,20 @@ $font: 'Montserrat', sans-serif;
         .nav-items{
             transition: 0.2s;   
             color: tomato;        
+        }
+        .nav-items-custom{
+            position: absolute;
+            float: right;
+            border-radius: 40px;
+            width: 150px;
+            transition: 0.2s;   
+            color: white;    
+            .cusRadio{
+                background-color: tomato;
+                border-radius: 25px;
+            }
+            
+
         }
         .nav-items:hover{
             font-size: 120%;
@@ -70,3 +85,254 @@ $font: 'Montserrat', sans-serif;
         }
     }
 }
+
+// Light theme csss 
+
+
+// =======================================================================
+.light{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: white;
+    
+    .header{
+        font-family: $font;
+        opacity: 0;
+        color: white;
+        
+    }
+    .nav{
+        
+        display: grid;
+        grid-template-columns: repeat(3, 80px);
+        place-content: center;
+        width: 100vw;
+        height: 35px;
+        font-size: 20px;
+        font-family: $font;
+        font-weight: bold;
+        
+        .nav-items{
+            transition: 0.2s;   
+            color: tomato;        
+        }
+        .nav-items:hover{
+            font-size: 120%;
+            color: tomato;
+        }
+
+
+        .nav-items-custom{
+            position: absolute;
+            float: right;
+            border-radius: 40px;
+            width: 150px;
+            transition: 0.2s;   
+            color: black;    
+            .cusRadio{
+                background-color: tomato;
+                border-radius: 25px;
+            }
+            
+
+        }
+    }
+
+    .cusButton{
+        // margin-top:10px;
+        padding:10px 25px 10px 25px;
+        font-weight: bolder;
+        // font-size: 120%;
+        font-family: $font;
+        border: 2px solid tomato;
+        background-color: white;
+        color: tomato;
+        outline: none;
+        transition: 0.25s;
+        
+        cursor: pointer;
+        &:hover {
+            background-color: tomato;
+            border-color: tomato;
+            color: white;
+        }
+       
+        &:active {
+            background-color: #282828;
+            border-color: tomato;  
+            color: #282828;
+            animation-name: clicked;
+            animation-duration: 0.2s;
+        }
+        @keyframes clicked {
+            0%{
+                transform: scale(0.95);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+    }
+    
+
+
+
+
+    
+
+    .urlWelcome-body{
+    
+        .cusCircles{
+            position: absolute;
+            border-radius: 50%;
+            width: 500px;
+            height: 480px;
+            background-color: rgb(0, 0, 0);
+            margin-top: 80px;
+            margin-left: -200px;
+            display: grid;
+            place-content: center;
+            animation-name: mainCircle;
+            animation-duration: 5s;
+            animation-iteration-count: 1;
+            opacity: 1;       
+            transition: 2s;
+            animation-fill-mode: forwards;
+            &:hover{
+                
+            
+                
+            }
+        
+            @keyframes mainCircle {
+                0%{
+                    transform: scale(0.8);
+                }
+
+                100%{
+                    transform: scale(1.1);
+                }
+            }
+
+                .circle1{
+        
+                border-radius: 50%;
+                width: 400px;
+                height: 380px;
+                background-color: rgb(255, 255, 255);
+                display: grid;
+                place-content: center;
+                animation-name: circle1;
+                animation-duration: 8s;
+                animation-iteration-count: infinite;
+
+                @keyframes circle1 {
+                    50%{
+                        transform: scale(1.1);
+                    }
+                    100%{
+                        transform: scale(1);
+                    }     
+                }
+
+                    .circle2{
+                        opacity: 1;
+                        border-radius: 50%;
+                        width: 250px;
+                        height: 230px;
+                        background-color: rgb(0, 0, 0);
+                        animation-name: circle2;
+                        animation-duration: 8s;
+                        animation-iteration-count: infinite;
+                        animation-delay: 2s;
+
+                        @keyframes circle2 {
+                            50%{
+                                transform: scale(1.2);
+                            }
+                            100%{
+                                transform: scale(1);
+                            }     
+                        }
+            
+                    }
+                }
+        }
+    
+        .cardBody{
+            width: 100vw;
+            height: 80vh;
+            // border: 1px solid black;
+            display: grid;
+            place-content: center;
+            font-size: 25px;
+            font-family: $font;
+            font-weight: bold;
+            color: black;
+            
+            .card{
+                // opacity: 0;
+                padding: 40px;
+                // border: 1px solid red;
+                margin:80px -200px -80px 200px;
+            
+                opacity: 0;
+            transition: 0.5s;
+                    
+                    .cusText{
+                        transform: skewY(60deg);
+                    }
+                
+            }
+        }
+    
+    }
+    
+
+
+    .urlDashboard{
+        .cusSidenav{
+            width: 350px;
+            height: 85vh;
+            margin-top:43px;
+            background-color: white;
+            border: 1px solid rgba(255,99,71,0.5);
+            margin-left: 10px;
+            ul{
+                margin-top: 80px;
+                color: tomato;
+                list-style: none;
+                font-family: $font;
+                font-weight: bolder;
+                
+                li{
+                    display: flex;
+                    cursor: pointer;               
+                    padding: 20px;
+                    background: linear-gradient(to left, transparent 50%, rgba(255,99,71,0.3) 50%) right;
+                    background-size: 200%;
+                    transition: .7s ease-out;
+                    margin-right: 40px;
+                    &:hover{
+                        
+                        background-position: left;
+                    }
+                }
+                .active{
+                    background-color: rgba(255,99,71,0.5);
+                }
+    
+            }
+    
+          
+        }
+    }
+
+    .shortnerBody{
+        .stepperBackground{
+            background-color: white;
+        }
+    }
+}
+

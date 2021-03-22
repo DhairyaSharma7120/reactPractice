@@ -4,8 +4,12 @@ import UrlShort from './urlshort/urlshort'
 import ManageUser  from "./manageUser/manageUser";
 import ManageUrls from "./manageUrls/manageUrls"
 import './urlservice.scss'
+import { selectCurrentUser } from '../../../redux/user/user.selector';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 export class Urlservice extends Component {
+    
     constructor(){
         super()
         this.handleUrlShort = this.handleUrlShort.bind(this)
@@ -16,7 +20,7 @@ export class Urlservice extends Component {
         }
         
     }  
-
+    
     handleUrlShort() {
         console.log('this',this);
         this.setState({
@@ -38,10 +42,12 @@ export class Urlservice extends Component {
     }
     
     componentWillMount() {
+        const {currentUser} = this.props
         const path = this.props.path;
-       !this.props.userLoggedIn && this.props.history.push(`${path}/error-page`)
+        currentUser===false && this.props.history.push(`${path}/error-page`)
     }
     render() {
+        
         // const {history,path}=this.props;
         // console.log(this.state,"yaflaflsfaflmms")
         return (
@@ -62,5 +68,9 @@ export class Urlservice extends Component {
         )
     }
 }
+const mapStateToProps = createStructuredSelector({
+    currentUser : selectCurrentUser
+  })
+  
 
-export default Urlservice
+export default connect(mapStateToProps)(Urlservice)

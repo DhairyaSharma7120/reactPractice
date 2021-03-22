@@ -3,7 +3,7 @@ import { Icon, Label, Menu, Table,Container } from 'semantic-ui-react'
 import axios  from 'axios'
 import ReactPaginate from 'react-paginate';
 
-import { aGet }from '../../../axios/axiosInstance'
+import { aGet, aPost }from '../../../axios/axiosInstance'
 
 class ManageUrls extends React.Component {
     constructor(){
@@ -37,19 +37,20 @@ class ManageUrls extends React.Component {
 
     
     deleteData = (e,item)=>{
-        console.log((e.target.value));
-        console.log(item);
-        console.log(this.state.res);
+        console.log((e.target.value),"this is event");
+        console.log(item,"this is item");
+        
    
-        axios.get('/delete',{
+        aPost('delete/',{
             params: {
                 shortUrl: e.target.value
             }
         })
         .then(response => {
-            console.log(response);
-            if(response.data.success)
-            this.setState({ res: this.state.res.filter(e=>e._id !== item._id) });
+            console.log(response,"this is response");
+            if(response.data.success){
+            
+            this.setState({ res: this.state.res.filter(e=>e._id !== item._id) });}
             else console.log('err',response)
         })
         .catch(error => {
@@ -60,10 +61,11 @@ class ManageUrls extends React.Component {
 
 
     receivedData(){
-        aGet(`req/`)
+        aGet('req/')
         .then(res => {
 
             const data = res.data;
+            // console.log("this is the data ", data)
             const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
             
             const postData = slice.map(pd => <React.Fragment>
@@ -80,9 +82,9 @@ class ManageUrls extends React.Component {
         });
     }
     componentWillMount(){
-        aGet(`req/`)
+        aGet('req/')
         .then(res => {
-
+            console.log(res)
             const data = res.data;
             const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
             
@@ -103,7 +105,7 @@ class ManageUrls extends React.Component {
     
     render(){
         let dataSet = this.state.res;
-       
+       console.log(dataSet)
         return(
    
     <div style={{width:'65vw',height:'75vh'}}>

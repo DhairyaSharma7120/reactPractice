@@ -60,8 +60,7 @@ export default function HorizontalLabelPositionBelowStepper({nextStepper}) {
     
   return (
     <div className={classes.root}>
-      <Stepper style={{backgroundColor: '#282828',
-                        color: 'tomato'}} activeStep={activeStep} alternativeLabel>
+      <Stepper className="stepperBackground" activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (
           <Step>
             <StepLabel></StepLabel>

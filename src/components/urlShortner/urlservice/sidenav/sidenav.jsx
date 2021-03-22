@@ -1,6 +1,7 @@
-import { DragHandleRounded } from '@material-ui/icons';
+import { Icon } from 'semantic-ui-react'
 import React, { Component } from 'react'
 import './sidenav.scss'
+
 export class Sidenav extends Component {
     constructor(){
         super();
@@ -50,12 +51,13 @@ export class Sidenav extends Component {
         return (
             <div className="cusSidenav">
                <ul className="sidenavList">
-                    <li id="li1" onClick={
+              
+                <li id="li1" onClick={
                         ()=>{
                         this.setState({sideNav:'manageUsers'})
                         handleManageUser()
                         }
-                    }>Manage Users</li>
+                    }> <Icon name='home' /> Manage Users</li>
 
 
                     <li id="li2" onClick={
@@ -63,14 +65,14 @@ export class Sidenav extends Component {
                         this.setState({sideNav:'manageUrls'});
                         handleManageUrls();
                         }
-                    }>Manage URLs</li>
+                    }><Icon name='chain' /> Manage URLs</li>
 
                     <li id="li3" onClick={
                         ()=>{
                         this.setState({sideNav:'useShortners'})
                         handleUrlShort();
                         }
-                    } >Use Shortner</li>
+                    } ><Icon name='random ' /> Use Shortner</li>
 
                     <li id="li4" onClick={()=>this.setState({sideNav:'manageComplains'})} >Manage Complains</li>
                </ul>
@@ -80,4 +82,5 @@ export class Sidenav extends Component {
     }
 }
 
+  
 export default Sidenav

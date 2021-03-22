@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import anime from "animejs/lib/anime.es.js";
 import './welcome.scss'
 import { LinearScale } from '@material-ui/icons';
+import {selectCurrentUser} from '../../../redux/user/user.selector.js'
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 export class Welcome extends Component {
     componentDidMount() {
         anime({
@@ -18,10 +21,10 @@ export class Welcome extends Component {
         });
     }
     render() {
-        const {history,path} = this.props
+        const {history,path,currentUser} = this.props
         console.log("this is welcome page")
         return (
-            <div className="body">
+            <div className="urlWelcome-body">
               
                 <div className="cusCircles">
                     <div className="circle1">
@@ -32,10 +35,18 @@ export class Welcome extends Component {
                 <div className="cardBody">
                     
                     <div className="card">
-                        <p>Please Login to enjoy the service of this URL shortner</p>
+                       {currentUser? 
+                       
+                        <><p>Welcome To URL shortner</p>
+                        <button
+                        onClick={()=>history.push(`${path}/dashboard`)}
+                        className="cusButton"><span className="cusText">Let's Go</span></button></>
+                       :
+                       
+                       <><p>Please Login to enjoy the service of this URL shortner</p>
                         <button
                         onClick={()=>history.push(`${path}/login`)}
-                        className="cusButton"><span className="cusText">Let's Go</span></button>
+                        className="cusButton"><span className="cusText">Let's Go</span></button></>}
                     </div>
                 </div>
             </div>
@@ -43,4 +54,8 @@ export class Welcome extends Component {
     }
 }
 
-export default Welcome
+const mapStateToProps = createStructuredSelector({
+    currentUser: selectCurrentUser
+})
+
+export default connect(mapStateToProps)(Welcome)
