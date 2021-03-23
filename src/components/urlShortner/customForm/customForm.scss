@@ -1,0 +1,33 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+$font: 'Montserrat', sans-serif;    
+.customForm{
+    background-color: transparent;
+    border: 2px solid tomato;
+    padding: 80px 80px;
+    border-radius: 0px;   
+
+    .cusFormfield{
+        padding-bottom: 20px;
+        display: grid;
+        .cusLabel{
+            color: tomato;
+            font-family: $font;
+            justify-self: start;
+            font-weight: bold;
+            padding: 4px;
+                                
+            }
+            .cusInputTag{
+            padding: 8px;
+            background-color: transparent;
+            border-radius: 0px;
+            border: 1px solid tomato;
+            color: white;
+            &:active{
+            outline: none;
+            border: 2px solid tomato;
+            }
+        }
+    }
+}

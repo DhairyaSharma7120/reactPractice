@@ -11,6 +11,7 @@ import { setCurrentUser } from '../../redux/user/user.action'
 import { selectCurrentUser } from '../../redux/user/user.selector';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import FormDemo from './form'
 export class urlShortner extends Component {
   
   static propTypes = {
@@ -27,6 +28,7 @@ export class urlShortner extends Component {
       themeIsDark: true
     };
     this.themeChange = React.createRef();
+    this.modeRef = React.createRef();
     this.toggleState = this.toggleState.bind(this);
     this.toogleTheme = this.toogleTheme.bind(this);
   }
@@ -42,12 +44,14 @@ export class urlShortner extends Component {
   toogleTheme(myRef){
     var element = this.themeChange.current
     element.classList.toggle('light')
+    var element2 = this.modeRef.current
     const themeIsDark = this.state.themeIsDark
+    themeIsDark?element2.innerHTML="Light Mode":element2.innerHTML="Dark Mode"
     this.setState({themeIsDark:!themeIsDark})
     console.log(themeIsDark)
   }
-  myRef = React.createRef();
-
+  // myRef = React.createRef();
+  modeRef = React.createRef();
   render() {
     
    
@@ -71,7 +75,7 @@ export class urlShortner extends Component {
               className="nav-items"
               onClick={() => {
                 this.toggleState()
-                // history.push(`${path}`);
+                history.push(`${path}`);
               }}
             >
               Logout
@@ -84,7 +88,7 @@ export class urlShortner extends Component {
           )          
           }
           <div className="nav-items-custom">
-            <label className="label-custom">Dark mode</label>
+            <label ref={this.modeRef} className="label-custom">Dark mode</label>
             <Radio toggle onChange={this.toogleTheme} className="cusRadio"/></div> 
         </div>
       
@@ -125,6 +129,11 @@ export class urlShortner extends Component {
             exact
             path={`${path}/error-page`}
             component={() => <ErrorPage path={match.path} history={history} />}
+          />
+           <Route
+            exact
+            path={`${path}/form`}
+            component={() => <FormDemo path={match.path} history={history} />}
           />
         </Switch>
       </div>

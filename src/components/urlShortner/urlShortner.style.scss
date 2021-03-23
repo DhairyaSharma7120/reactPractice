@@ -5,7 +5,7 @@ $font: 'Montserrat', sans-serif;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-color: #282828;
+    background-color: #272727;
     
     .header{
         font-family: $font;
@@ -66,7 +66,7 @@ $font: 'Montserrat', sans-serif;
     &:hover {
         background-color: tomato;
         border-color: tomato;
-        color: #282828;
+        color: #272727;
     }
    
     &:active {
@@ -84,6 +84,8 @@ $font: 'Montserrat', sans-serif;
             transform: scale(1);
         }
     }
+
+    
 }
 
 // Light theme csss 
@@ -94,12 +96,12 @@ $font: 'Montserrat', sans-serif;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-color: white;
+    background-color: #F4F4F4;
     
     .header{
         font-family: $font;
         opacity: 0;
-        color: white;
+        color: #F4F4F4;
         
     }
     .nav{
@@ -146,7 +148,7 @@ $font: 'Montserrat', sans-serif;
         // font-size: 120%;
         font-family: $font;
         border: 2px solid tomato;
-        background-color: white;
+        background-color: #F4F4F4;
         color: tomato;
         outline: none;
         transition: 0.25s;
@@ -155,7 +157,7 @@ $font: 'Montserrat', sans-serif;
         &:hover {
             background-color: tomato;
             border-color: tomato;
-            color: white;
+            color: #F4F4F4;
         }
        
         &:active {
@@ -220,7 +222,7 @@ $font: 'Montserrat', sans-serif;
                 border-radius: 50%;
                 width: 400px;
                 height: 380px;
-                background-color: rgb(255, 255, 255);
+                background-color: #F4F4F4;
                 display: grid;
                 place-content: center;
                 animation-name: circle1;
