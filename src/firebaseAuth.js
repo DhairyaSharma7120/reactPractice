@@ -4,7 +4,7 @@ import 'firebase/auth';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 var firebaseConfig = {
-    apiKey: "AIzaSyAsyJ050R8VQeKUzmBFt5fybDpfQO3SAiI",
+    apiKey: process.env.FIREBASE_API_KEY,
     authDomain: "authenticationprac-a17b6.firebaseapp.com",
     projectId: "authenticationprac-a17b6",
     storageBucket: "authenticationprac-a17b6.appspot.com",
@@ -35,6 +35,7 @@ var firebaseConfig = {
           ...additionalData
         })
         console.log("this is working")
+        console.log(process.env.FIREBASE_API_KEY)
       }catch(error){
         console.log('error creating user', error.message)
       }
