@@ -3,7 +3,7 @@ import { Icon, Label, Menu, Table,Container } from 'semantic-ui-react'
 import axios  from 'axios'
 import ReactPaginate from 'react-paginate';
 
-import { aGet, aPost }from '../../../axios/axiosInstance'
+import { aGet, aPost }from '../../axiosInstance'
 
 class ManageUrls extends React.Component {
     constructor(){

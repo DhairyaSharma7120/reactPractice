@@ -12,6 +12,7 @@ import { selectCurrentUser } from '../../redux/user/user.selector';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import FormDemo from './form'
+import AnimationPrac from './animationPrac/animationPrac.js'
 export class urlShortner extends Component {
   
   static propTypes = {
@@ -97,7 +98,11 @@ export class urlShortner extends Component {
           path={`${path}/`}
           component={() => <Welcome path={match.path} history={history} />}
         />
-
+           <Route
+          exact
+          path={`${path}/animation`}
+          component={() => <AnimationPrac path={match.path} history={history} />}
+        />
         <Switch>
           <Route
             exact

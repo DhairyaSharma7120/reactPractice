@@ -1,6 +1,6 @@
 import axios from 'axios';
 const axiousInstance = axios.create({
-  baseURL: `http://localhost:8000`
+  baseURL: `https://jsonplaceholder.typicode.com/`
 });
 
 const aGet = (url)=> axiousInstance.get(url)

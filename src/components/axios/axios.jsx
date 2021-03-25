@@ -56,6 +56,7 @@ class AxiosPractice  extends React.Component {
                     postData
                 })
                 this.setState({res:slice});
+                console.log(postData,"this is the post data ")
             });
     }
     checkApi() {
@@ -78,6 +79,7 @@ class AxiosPractice  extends React.Component {
         // console.log(this.state.res,"this is the response data")
         console.log(this.state.mappedData,"this is the mapped data")
         let dataSet = this.state.res;
+        console.log(dataSet)
         // dataSet.map(item => console.log(item))        
         return (
             <div>

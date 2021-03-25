@@ -7,6 +7,8 @@ const doc = require('./config/schema'); // importing schema of document
 const app = express()
 const port = process.env.PORT || 8000; 
 var fs = require('fs')
+var multer  = require('multer')
+
 var filename = '../src/components/urlShortner/url-id.json'
 var jsonData = require('../src/components/urlShortner/url-id.json')
 app.use(express.json());
@@ -49,6 +51,9 @@ app.get(`/drocks`,(req,res)=>{
 })
 
 
+
+
+
 app.post('/delete',(req,res)=>{
   // console.log(req.body.shortUrl);  
   doc.deleteOne({ user: req.query.shortUrl }, function (err) {
@@ -62,6 +67,8 @@ app.post('/delete',(req,res)=>{
 const handleError = (err)=>{
   return { success:false,error:err } 
 }
+
+
 
 
 
@@ -81,6 +88,8 @@ fs.writeFile(filename, JSON.stringify(jsonData), function writeJSON(err) {
 
 
 
+
+
 //Inserting Data in the database
 app.post('/insert', (req, res) => {
     var newDoc = new doc({
@@ -95,6 +104,32 @@ app.post('/insert', (req, res) => {
     console.log(newDoc)
     res.send("newDoc"); 
   });
+
+var storage = multer.diskStorage({
+    destination: function (req, file, callback) {
+      callback(null, './uploads');
+    },
+    filename: function (req, file, callback) {
+      var extensionArray = file.originalname.split('.')
+      var extension = extensionArray[extensionArray.length-1]
+      console.log()
+      callback(null, Date.now()+"-"+"personalUpload"+"."+extension);
+    }
+  });
+  var upload = multer({ storage : storage }).array('file',10);
+  app.post('/uploadFile',function(req,res){
+    upload(req,res,function(err) {
+        // console.log(req.body);
+        console.log(req.files);
+        if(err) {
+            return res.send({success: false});
+        }
+        console.log("working")
+        res.send({success: true});
+    });
+});
+
+
 
 app.listen(port,()=>{
     console.log(`Server is now running on port : ${port}`)
